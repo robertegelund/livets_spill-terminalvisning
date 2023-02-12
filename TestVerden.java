@@ -39,7 +39,7 @@ class TestVerden {
 
 	testKonstruktoer();
 	testTegn();
-	// testOppdatering();
+	testOppdatering();
 
 	System.out.println();
     }
