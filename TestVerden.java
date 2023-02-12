@@ -37,8 +37,8 @@ class TestVerden {
     public static void main (String[] arg) {
 	System.out.println("** Test Verden **");
 
-	// testKonstruktoer();
-	// testTegn();
+	testKonstruktoer();
+	testTegn();
 	// testOppdatering();
 
 	System.out.println();
