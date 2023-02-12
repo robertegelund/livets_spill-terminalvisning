@@ -55,7 +55,28 @@ class Rutenett {
     }
 
     public void settNaboer(int rad, int kol) {
+        Celle celle = hentCelle(rad, kol);
+        if(celle == null) return;
         
+        for(int r = -1; r <= 1; r++) {
+            for (int k = -1; k <= 1; k++) {
+                
+                // Hopper over cellen selv (ikke sin egen nabo)
+                if(r == 0 && k == 0) continue;
+                
+                Celle nabo = hentCelle(rad+r, kol+k);
+                if(nabo != null) {
+                    // Legger til nabo hvis man er innenfor brettet
+                    celle.leggTilNabo(nabo);
+                }
+            }
+        }
+    }
+
+    public void kobleAlleCeller() {
+        for(int rad = 0; rad < antRader; rad++) {
+            for(int kol = 0; kol < antKolonner)
+        }
     }
 
 
