@@ -138,7 +138,7 @@ class TestRutenett {
 	testFyllMedTilfeldigeCeller();
 	testHentCelle();
 	testTegnRutenett();
-	// testSettNaboer();
+	testSettNaboer();
 	// testKobleAlleCeller();
 	// testAntallLevende();
     }
