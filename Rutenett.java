@@ -56,7 +56,10 @@ class Rutenett {
 
     public void settNaboer(int rad, int kol) {
         Celle celle = hentCelle(rad, kol);
-        if(celle == null) return;
+        if(celle == null) {
+            System.out.println("Cellen eksisterer ikke, og kan ikke ha naboer.");
+            return;
+        }
         
         for(int r = -1; r <= 1; r++) {
             for (int k = -1; k <= 1; k++) {
@@ -75,8 +78,22 @@ class Rutenett {
 
     public void kobleAlleCeller() {
         for(int rad = 0; rad < antRader; rad++) {
-            for(int kol = 0; kol < antKolonner)
+            for(int kol = 0; kol < antKolonner; kol++) {
+                settNaboer(rad, kol);
+            }
         }
+    }
+
+    public int antallLevende() {
+        int antallLevende = 0;
+        for(int rad = 0; rad < antRader; rad++) {
+            for(int kol = 0; kol < antKolonner; kol++) {
+                if(rutene[rad][kol].erLevende()) {
+                    antallLevende++;
+                }
+            }
+        }
+        return antallLevende;
     }
 
 

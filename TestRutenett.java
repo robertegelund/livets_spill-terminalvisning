@@ -139,7 +139,7 @@ class TestRutenett {
 	testHentCelle();
 	testTegnRutenett();
 	testSettNaboer();
-	// testKobleAlleCeller();
-	// testAntallLevende();
+	testKobleAlleCeller();
+	testAntallLevende();
     }
 }
