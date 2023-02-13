@@ -10,7 +10,7 @@ class Rutenett {
 
     public void lagCelle(int rad, int kol) {
         if(!erRadKolLovlig(rad, kol) || (rutene[rad][kol] != null)) {
-            //Avslutter metoden hvis ugyldig rad og/eller kolonne
+            //Skriver beskjed til terminal og avslutter metoden hvis ugyldig rad og/eller kolonne
             System.out.println("[ERROR] Ugyldig rutenettkoordinat: " + rad + ", " + kol);
             System.out.println("Celle er hverken laget eller plassert.");
             return;
@@ -32,7 +32,7 @@ class Rutenett {
     }
 
     public Celle hentCelle(int rad, int kol) {
-        if(erRadKolLovlig(rad, kol)) {
+        if(erRadKolLovlig(rad, kol) && rutene[rad][kol] != null) {
             return rutene[rad][kol];
         }
         return null;
@@ -64,7 +64,7 @@ class Rutenett {
         for(int r = -1; r <= 1; r++) {
             for (int k = -1; k <= 1; k++) {
                 
-                // Hopper over cellen selv (ikke sin egen nabo)
+                // Hopper over cellen selv (celler er ikke sin egen nabo)
                 if(r == 0 && k == 0) continue;
                 
                 Celle nabo = hentCelle(rad+r, kol+k);
