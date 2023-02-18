@@ -63,7 +63,7 @@ class Rutenett {
         try {
             if(celle == null) throw new NullPointerException();
         } catch(NullPointerException e) {
-            System.out.println("Cellen eksisterer ikke, og kan ikke ha naboer.");
+            System.out.println("[ERROR] Cellen eksisterer ikke, og kan ikke ha naboer.");
             return;
         }
         
