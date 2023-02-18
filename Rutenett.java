@@ -14,9 +14,10 @@ class Rutenett {
             return;
         }
         
+        Celle nyCelle = new Celle();
+        if(Math.random() <= 0.3333) nyCelle.settLevende();
+        
         try {
-            Celle nyCelle = new Celle();
-            if(Math.random() <= 0.3333) nyCelle.settLevende();
             rutene[rad][kol] = nyCelle;
         } catch(ArrayIndexOutOfBoundsException e) {
             System.out.println("[ERROR] Ugyldige cellekoordinater. Ny celle ikke opprettet.");   
@@ -32,8 +33,9 @@ class Rutenett {
     }
 
     public Celle hentCelle(int rad, int kol) {
+        Celle celle = rutene[rad][kol];
+        
         try {
-            Celle celle = rutene[rad][kol];
             if(celle == null) throw new NullPointerException();
             return celle;
         } catch (Exception e) {
