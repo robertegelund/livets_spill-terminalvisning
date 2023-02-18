@@ -33,9 +33,8 @@ class Rutenett {
     }
 
     public Celle hentCelle(int rad, int kol) {
-        Celle celle = rutene[rad][kol];
-        
         try {
+            Celle celle = rutene[rad][kol];
             if(celle == null) throw new NullPointerException();
             return celle;
         } catch (Exception e) {
