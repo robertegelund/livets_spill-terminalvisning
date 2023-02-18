@@ -1,12 +1,8 @@
 class Celle{
-    boolean levende;
+    boolean levende = false;
     Celle[] naboer = new Celle[8];
     int antNaboer = 0;
     int antLevendeNaboer = 0;
-    
-    Celle() {
-        levende = false;
-    }
 
     public void settLevende() {
         levende = true;
