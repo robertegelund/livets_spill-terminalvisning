@@ -19,7 +19,7 @@ class Rutenett {
             if(Math.random() <= 0.3333) nyCelle.settLevende();
             rutene[rad][kol] = nyCelle;
         } catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println("[ERROR] Ugyldige cellekoordinater. Celle ikke opprettet.");   
+            System.out.println("[ERROR] Ugyldige cellekoordinater. Ny celle ikke opprettet.");   
         }
     }
     
