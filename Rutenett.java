@@ -9,18 +9,18 @@ class Rutenett {
     }
 
     public void lagCelle(int rad, int kol) {
-        if(!erRadKolLovlig(rad, kol) || (rutene[rad][kol] != null)) {
-            //Skriver beskjed til terminal og avslutter metoden hvis ugyldig rad og/eller kolonne
-            System.out.println("[ERROR] Ugyldig rutenettkoordinat: " + rad + ", " + kol);
-            System.out.println("Celle er hverken laget eller plassert.");
+        if(rutene[rad][kol] != null) {
+            System.out.println("[ERROR] Det finnes en celle paa angitt plass. Celle ikke opprettet.");
             return;
         }
-
-        Celle nyCelle = new Celle();
-        if(Math.random() <= 0.3333) {
-            nyCelle.settLevende();
+        
+        try {
+            Celle nyCelle = new Celle();
+            if(Math.random() <= 0.3333) nyCelle.settLevende();
+            rutene[rad][kol] = nyCelle;
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("[ERROR] Ugyldige cellekoordinater. Celle ikke opprettet.");   
         }
-        rutene[rad][kol] = nyCelle;
     }
     
     public void fyllMedTilfeldigeCeller() {
@@ -32,10 +32,14 @@ class Rutenett {
     }
 
     public Celle hentCelle(int rad, int kol) {
-        if(erRadKolLovlig(rad, kol) && rutene[rad][kol] != null) {
-            return rutene[rad][kol];
+        try {
+            Celle celle = rutene[rad][kol];
+            if(celle == null) throw new NullPointerException();
+            return celle;
+        } catch (Exception e) {
+            // ArrayIndexOutOfBoundsException eller NullointerException
+            return null;
         }
-        return null;
     }
 
     public void tegnRutenett() {
@@ -56,7 +60,9 @@ class Rutenett {
 
     public void settNaboer(int rad, int kol) {
         Celle celle = hentCelle(rad, kol);
-        if(celle == null) {
+        try {
+            if(celle == null) throw new NullPointerException();
+        } catch(NullPointerException e) {
             System.out.println("Cellen eksisterer ikke, og kan ikke ha naboer.");
             return;
         }
@@ -88,22 +94,12 @@ class Rutenett {
         int antallLevende = 0;
         for(int rad = 0; rad < antRader; rad++) {
             for(int kol = 0; kol < antKolonner; kol++) {
-                if(rutene[rad][kol].erLevende()) {
+                Celle celle = rutene[rad][kol];
+                if(celle != null && celle.erLevende()) {
                     antallLevende++;
                 }
             }
         }
         return antallLevende;
     }
-
-
-    private boolean erRadKolLovlig(int rad, int kol) {
-        if(rad >= antRader || kol >= antKolonner) {
-            return false;
-        } else if (rad < 0 || kol < 0) {
-            return false;
-        }
-        return true;
-    }
-
 }
