@@ -22,10 +22,11 @@ class Celle{
     }
 
     public void leggTilNabo(Celle nabo) {
-        if(antNaboer < 8) {
+        try {
             naboer[antNaboer] = nabo;
             antNaboer++;
-        } else {
+        } catch(ArrayIndexOutOfBoundsException e) {
+            // Kastes en feil hvis det allerede er 8 naboer i arrayet
             System.out.println("Cellen har allerede 8 naboer!");
         }
     }
