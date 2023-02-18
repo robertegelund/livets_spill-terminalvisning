@@ -10,7 +10,7 @@ class Rutenett {
 
     public void lagCelle(int rad, int kol) {
         if(rutene[rad][kol] != null) {
-            System.out.println("[ERROR] Det finnes en celle paa angitt plass. Celle ikke opprettet.");
+            System.out.println("[ERROR] Det finnes en celle paa angitt plass. Ny celle ikke opprettet.");
             return;
         }
         
