@@ -61,6 +61,7 @@ class Rutenett {
 
     public void settNaboer(int rad, int kol) {
         Celle celle = hentCelle(rad, kol);
+        
         try {
             if(celle == null) throw new NullPointerException();
         } catch(NullPointerException e) {
